@@ -18,6 +18,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import Link from "next/link";
+import { Gamepad as GamepadIcon, HelpCircle as HelpCircleIcon, Info as InfoIcon } from 'lucide-react';
 
 const otherGames = [
   {
@@ -168,75 +169,137 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="mb-16">
-          <h2 className="text-3xl font-bold mb-8 text-center">Why Choose Blossom Games?</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {[
-              {
-                title: "Instant Play",
-                description: "No downloads or installations needed - play right in your browser",
-              },
-              {
-                title: "Free Forever",
-                description: "All our games are completely free to play",
-              },
-              {
-                title: "Daily Updates",
-                description: "New games bloom in our collection regularly",
-              },
-              {
-                title: "Cross-Platform",
-                description: "Play on any device, anywhere, anytime",
-              },
-            ].map((feature, index) => (
-              <Card key={index}>
-                <CardHeader>
-                  <CardTitle>{feature.title}</CardTitle>
-                  <CardDescription>{feature.description}</CardDescription>
-                </CardHeader>
-              </Card>
-            ))}
+        <section className="mb-16" id="description">
+          <div className="container">
+            <div className="bg-card rounded-lg p-8 shadow-lg">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
+                <div className="flex justify-center">
+                  <img 
+                    src="/assets/img/android-chrome-512x512.png"
+                    alt="Blossom Games"
+                    className="w-48 h-48 object-contain"
+                  />
+                </div>
+                <div className="md:col-span-2">
+                  <h2 className="text-3xl font-bold mb-4">Blossom: Free Unblocked Online Games</h2>
+                  <p className="text-lg text-muted-foreground mb-6">
+                    Blossom Games is your premier destination for free online gaming entertainment. 
+                    Our platform offers a diverse collection of browser-based games that you can play 
+                    instantly without any downloads or installations. From classic arcade games like 
+                    Bubble Shooter to engaging puzzle adventures and fun social games like Love Tester, 
+                    we provide endless entertainment for players of all ages. All our games are optimized 
+                    for both desktop and mobile devices, ensuring you can enjoy gaming wherever you are.
+                  </p>
+                  <ul className="flex gap-6">
+                    <li>
+                      <Link 
+                        href="#how-to-play" 
+                        className="text-primary hover:underline font-semibold flex items-center gap-2"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          document.getElementById('how-to-play')?.scrollIntoView({ behavior: 'smooth' });
+                        }}
+                      >
+                        <GamepadIcon className="h-4 w-4" />
+                        How to Play
+                      </Link>
+                    </li>
+                    <li>
+                      <Link 
+                        href="#faq" 
+                        className="text-primary hover:underline font-semibold flex items-center gap-2"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          document.getElementById('faq')?.scrollIntoView({ behavior: 'smooth' });
+                        }}
+                      >
+                        <HelpCircleIcon className="h-4 w-4" />
+                        FAQ
+                      </Link>
+                    </li>
+                    <li>
+                      <Link 
+                        href="#footer-about" 
+                        className="text-primary hover:underline font-semibold flex items-center gap-2"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          document.getElementById('footer-about')?.scrollIntoView({ behavior: 'smooth' });
+                        }}
+                      >
+                        <InfoIcon className="h-4 w-4" />
+                        About
+                      </Link>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
           </div>
         </section>
 
-        <section className="mb-16">
+        <section className="mb-16" id="how-to-play">
           <h2 className="text-3xl font-bold mb-8 text-center">How to Play</h2>
-          <Card>
-            <CardContent className="p-6">
-              <ol className="list-decimal list-inside space-y-4">
-                <li>Use the search bar at the top to find your favorite games</li>
-                <li>Click on any game in the "Play Other Games" section to start playing</li>
-                <li>Enjoy the game directly in your browser - no downloads needed!</li>
-              </ol>
-            </CardContent>
-          </Card>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <Card>
+              <CardHeader>
+                <CardTitle>Getting Started</CardTitle>
+              </CardHeader>
+              <CardContent className="p-6">
+                <ol className="list-decimal list-inside space-y-4">
+                  <li>Browse our collection of free online games</li>
+                  <li>Click "Play Now" on any game that interests you</li>
+                  <li>The game will load instantly in your browser</li>
+                  <li>No registration or downloads required!</li>
+                </ol>
+              </CardContent>
+            </Card>
+            <Card>
+              <CardHeader>
+                <CardTitle>Game Controls</CardTitle>
+              </CardHeader>
+              <CardContent className="p-6">
+                <ul className="list-disc list-inside space-y-4">
+                  <li>Use mouse/touch for most games</li>
+                  <li>Arrow keys for movement in some games</li>
+                  <li>Game-specific instructions appear before play</li>
+                  <li>Adjust volume using in-game controls</li>
+                </ul>
+              </CardContent>
+            </Card>
+          </div>
         </section>
 
-        <section className="mb-16">
+        <section className="mb-16" id="faq">
           <h2 className="text-3xl font-bold mb-8 text-center">FAQ</h2>
           <Accordion type="single" collapsible className="w-full">
             <AccordionItem value="item-1">
-              <AccordionTrigger>Do I need to download and install games?</AccordionTrigger>
+              <AccordionTrigger>Are all games really free to play?</AccordionTrigger>
               <AccordionContent>
-                No, all HTML5 games can be played directly in your browser without any downloads or installation.
+                Yes! All games on Blossom Games are 100% free to play. We believe in providing entertainment without any cost to our players.
               </AccordionContent>
             </AccordionItem>
             <AccordionItem value="item-2">
-              <AccordionTrigger>Can I play these games on my phone?</AccordionTrigger>
+              <AccordionTrigger>Do I need to create an account?</AccordionTrigger>
               <AccordionContent>
-                Yes, all games are compatible with both desktop and mobile devices, ensuring smooth gameplay on your phone.
+                No account is needed! Just visit our website and start playing instantly. We keep it simple and hassle-free.
               </AccordionContent>
             </AccordionItem>
             <AccordionItem value="item-3">
-              <AccordionTrigger>Can I search for any game?</AccordionTrigger>
+              <AccordionTrigger>Which devices are supported?</AccordionTrigger>
               <AccordionContent>
-                The search function only works for games listed on our website. Games not in our collection cannot be found through search.
+                Our games work on all modern devices including smartphones, tablets, laptops, and desktop computers. Just make sure you have an updated browser.
               </AccordionContent>
             </AccordionItem>
             <AccordionItem value="item-4">
-              <AccordionTrigger>What if I encounter issues while playing?</AccordionTrigger>
+              <AccordionTrigger>How often are new games added?</AccordionTrigger>
               <AccordionContent>
-                If you experience any problems during gameplay, please stay tuned for our upcoming feedback channels. We'll address issues promptly.
+                We regularly update our collection with new games. Check back often to discover fresh entertainment!
+              </AccordionContent>
+            </AccordionItem>
+            <AccordionItem value="item-5">
+              <AccordionTrigger>What if a game isn't loading?</AccordionTrigger>
+              <AccordionContent>
+                Try refreshing your browser, clearing cache, or using a different browser. If issues persist, contact us through our social media channels.
               </AccordionContent>
             </AccordionItem>
           </Accordion>
@@ -246,9 +309,52 @@ export default function Home() {
       <footer className="border-t bg-muted">
         <div className="container mx-auto px-4 py-8">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div id="footer-about">
+              <h3 className="text-lg font-semibold mb-4">About</h3>
+              <p className="text-muted-foreground">Your premier destination for free online gaming entertainment. Play instantly, anywhere, anytime.</p>
+            </div>
             <div>
-              <h3 className="text-lg font-semibold mb-4">Blossom Games</h3>
-              <p className="text-muted-foreground">Your garden of online entertainment, where fun blooms endlessly.</p>
+              <h3 className="font-bold mb-4">Quick Links</h3>
+              <ul className="space-y-2">
+                <li>
+                  <Link href="/games/love-tester" className="text-sm text-muted-foreground hover:text-primary">
+                    Love Tester
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/games/bubble-shooter" className="text-sm text-muted-foreground hover:text-primary">
+                    Bubble Shooter
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/games/candy-match" className="text-sm text-muted-foreground hover:text-primary">
+                    Candy Match
+                  </Link>
+                </li>
+              </ul>
+            </div>
+            <div>
+              <h3 className="font-bold mb-4">Connect With Us</h3>
+              <div className="space-y-4">
+                <div className="flex items-center space-x-2">
+                  <Facebook className="h-5 w-5" />
+                  <Link href="https://facebook.com/blossomgames" className="text-sm text-muted-foreground hover:text-primary">
+                    Facebook
+                  </Link>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <Twitter className="h-5 w-5" />
+                  <Link href="https://twitter.com/blossomgames" className="text-sm text-muted-foreground hover:text-primary">
+                    Twitter
+                  </Link>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <Instagram className="h-5 w-5" />
+                  <Link href="https://instagram.com/blossomgames" className="text-sm text-muted-foreground hover:text-primary">
+                    Instagram
+                  </Link>
+                </div>
+              </div>
             </div>
             <div>
               <h3 className="font-bold mb-4">Legal</h3>
@@ -263,37 +369,35 @@ export default function Home() {
                     Terms of Service
                   </Link>
                 </li>
+                <li>
+                  <Link href="/cookie-policy" className="text-sm text-muted-foreground hover:text-primary">
+                    Cookie Policy
+                  </Link>
+                </li>
               </ul>
             </div>
-            <div>
-              <h3 className="font-bold mb-4">Follow Us</h3>
-              <div className="flex space-x-4">
-                <Link href="https://facebook.com" className="text-muted-foreground hover:text-primary" aria-label="Follow us on Facebook">
-                  <Facebook className="h-5 w-5" />
-                </Link>
-                <Link href="https://twitter.com" className="text-muted-foreground hover:text-primary" aria-label="Follow us on Twitter">
-                  <Twitter className="h-5 w-5" />
-                </Link>
-                <Link href="https://instagram.com" className="text-muted-foreground hover:text-primary" aria-label="Follow us on Instagram">
-                  <Instagram className="h-5 w-5" />
-                </Link>
-              </div>
-            </div>
-            <div>
-              <h3 className="font-bold mb-4">Contact</h3>
-              <p className="text-sm text-muted-foreground">
-                Questions? Reach out to us on social media.
-              </p>
-            </div>
           </div>
-          <div className="mt-8 pt-8 border-t text-center text-sm text-muted-foreground">
-            © {new Date().getFullYear()} Blossom Games. All rights reserved.
+          <div className="mt-8 pt-8 border-t">
+            <div className="text-center text-sm text-muted-foreground">
+              © {new Date().getFullYear()} Blossom Games. All rights reserved.
+            </div>
+            <div className="text-center text-xs text-muted-foreground mt-2">
+              All games on this platform are free to play and do not require downloads.
+            </div>
           </div>
         </div>
       </footer>
     </div>
   );
 }
+
+
+
+
+
+
+
+
 
 
 
