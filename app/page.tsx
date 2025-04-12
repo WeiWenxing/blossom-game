@@ -19,6 +19,7 @@ import {
 } from "@/components/ui/accordion";
 import Link from "next/link";
 import { Gamepad as GamepadIcon, HelpCircle as HelpCircleIcon, Info as InfoIcon } from 'lucide-react';
+import { howToPlaySchema } from "./schema";
 
 const otherGames = [
   {
@@ -238,34 +239,37 @@ export default function Home() {
         </section>
 
         <section className="mb-16" id="how-to-play">
+          <script 
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(howToPlaySchema) }}
+          />
+          
           <h2 className="text-3xl font-bold mb-8 text-center">How to Play</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <Card>
-              <CardHeader>
-                <CardTitle>Getting Started</CardTitle>
-              </CardHeader>
-              <CardContent className="p-6">
-                <ol className="list-decimal list-inside space-y-4">
-                  <li>Browse our collection of free online games</li>
-                  <li>Click "Play Now" on any game that interests you</li>
-                  <li>The game will load instantly in your browser</li>
-                  <li>No registration or downloads required!</li>
-                </ol>
-              </CardContent>
-            </Card>
-            <Card>
-              <CardHeader>
-                <CardTitle>Game Controls</CardTitle>
-              </CardHeader>
-              <CardContent className="p-6">
-                <ul className="list-disc list-inside space-y-4">
-                  <li>Use mouse/touch for most games</li>
-                  <li>Arrow keys for movement in some games</li>
-                  <li>Game-specific instructions appear before play</li>
-                  <li>Adjust volume using in-game controls</li>
-                </ul>
-              </CardContent>
-            </Card>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {howToPlaySchema.step.map((step, index) => (
+              <Card key={index}>
+                <CardHeader>
+                  <CardTitle className="flex items-center gap-2">
+                    <span className="flex items-center justify-center w-8 h-8 rounded-full bg-primary text-primary-foreground">
+                      {step.position}
+                    </span>
+                    {step.name}
+                  </CardTitle>
+                </CardHeader>
+                <CardContent className="p-6 space-y-4">
+                  <div className="relative aspect-video overflow-hidden rounded-lg">
+                    <img 
+                      src={step.image}
+                      alt={`Step ${step.position}: ${step.name}`}
+                      className="object-cover w-full h-full"
+                    />
+                  </div>
+                  <p className="text-muted-foreground">
+                    {step.text}
+                  </p>
+                </CardContent>
+              </Card>
+            ))}
           </div>
         </section>
 
@@ -334,23 +338,41 @@ export default function Home() {
               </ul>
             </div>
             <div>
-              <h3 className="font-bold mb-4">Connect With Us</h3>
+              <h3 className="font-bold mb-4">Share</h3>
               <div className="space-y-4">
                 <div className="flex items-center space-x-2">
                   <Facebook className="h-5 w-5" />
-                  <Link href="https://facebook.com/blossomgames" className="text-sm text-muted-foreground hover:text-primary">
+                  <Link 
+                    href={`https://www.facebook.com/share/sharer.php?u=${encodeURIComponent('https://blossomgames.example.com')}&quote=${encodeURIComponent('Just discovered this amazing Blossom game! 🌸 A beautiful and addictive puzzle adventure that you can play for free in your browser. Try it now! #BlossomGame #FreeOnlineGames')}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-sm text-muted-foreground hover:text-primary"
+                  >
                     Facebook
                   </Link>
                 </div>
                 <div className="flex items-center space-x-2">
                   <Twitter className="h-5 w-5" />
-                  <Link href="https://twitter.com/blossomgames" className="text-sm text-muted-foreground hover:text-primary">
+                  <Link 
+                    href={`https://twitter.com/intent/tweet?text=${encodeURIComponent('🌸 Playing Blossom - the most beautiful puzzle game online! No downloads needed, just pure entertainment. Join me at')}&url=${encodeURIComponent('https://blossomgames.example.com')}&hashtags=BlossomGame,PuzzleGames`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-sm text-muted-foreground hover:text-primary"
+                  >
                     Twitter
                   </Link>
                 </div>
                 <div className="flex items-center space-x-2">
                   <Instagram className="h-5 w-5" />
-                  <Link href="https://instagram.com/blossomgames" className="text-sm text-muted-foreground hover:text-primary">
+                  <Link 
+                    href="https://www.instagram.com/create/story"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-sm text-muted-foreground hover:text-primary"
+                    onClick={() => {
+                      navigator.clipboard.writeText('🌸 Found this gorgeous Blossom puzzle game - so relaxing and fun! Play for free at https://blossomgames.example.com #BlossomGame #OnlineGaming');
+                    }}
+                  >
                     Instagram
                   </Link>
                 </div>
@@ -369,11 +391,6 @@ export default function Home() {
                     Terms of Service
                   </Link>
                 </li>
-                <li>
-                  <Link href="/cookie-policy" className="text-sm text-muted-foreground hover:text-primary">
-                    Cookie Policy
-                  </Link>
-                </li>
               </ul>
             </div>
           </div>
@@ -390,6 +407,8 @@ export default function Home() {
     </div>
   );
 }
+
+
 
 
 
