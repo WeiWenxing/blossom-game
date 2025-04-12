@@ -21,70 +21,15 @@ import Link from "next/link";
 import { Gamepad as GamepadIcon, HelpCircle as HelpCircleIcon, Info as InfoIcon } from 'lucide-react';
 import { howToPlaySchema, generateRatingSchema } from "./schema";
 
-const otherGames = [
-  {
-    id: 1,
-    title: "Bubble Shooter",
-    description: "Classic bubble shooting game with colorful graphics and engaging gameplay",
-    url: "https://play.famobi.com/bubble-shooter-classic",
-    image: "https://images.unsplash.com/photo-1614680376573-df3480f0c6ff?w=500&q=80",
-  },
-  {
-    id: 2,
-    title: "Candy Match",
-    description: "Match delicious candies in this sweet puzzle adventure",
-    url: "https://play.famobi.com/candy-match-3",
-    image: "https://images.unsplash.com/photo-1596451190630-186aff535bf2?w=500&q=80",
-  },
-  {
-    id: 3,
-    title: "Mahjong",
-    description: "Traditional Mahjong solitaire with beautiful tile designs",
-    url: "https://play.famobi.com/mahjong-3d",
-    image: "https://images.unsplash.com/photo-1611996575749-79a3a250f948?w=500&q=80",
-  },
-  {
-    id: 4,
-    title: "Solitaire",
-    description: "Classic card game with multiple variations and challenges",
-    url: "https://play.famobi.com/solitaire-classic",
-    image: "https://images.unsplash.com/photo-1585504198199-20277593b94f?w=500&q=80",
-  },
-];
+interface Game {
+  id: string;
+  title: string;
+  description: string;
+  image: string;
+  url: string;
+}
 
-// 添加 Love Tester 游戏的配置
-const loveTesterGame = {
-  title: "Love Tester",
-  description: "Test the compatibility between you and your crush!",
-  content: () => (
-    <div className="w-full max-w-md mx-auto p-6">
-      <div className="space-y-4">
-        <div>
-          <Input
-            type="text"
-            placeholder="Enter first name"
-            className="mb-2"
-          />
-          <Input
-            type="text"
-            placeholder="Enter second name"
-            className="mb-4"
-          />
-        </div>
-        <Button
-          className="w-full"
-          onClick={() => {
-            // 这里添加计算匹配度的逻辑
-            const result = Math.floor(Math.random() * 100);
-            alert(`Love Match: ${result}%`);
-          }}
-        >
-          Calculate Love Match
-        </Button>
-      </div>
-    </div>
-  )
-};
+const otherGames: Game[] = [];
 
 export default function Home() {
   const [searchQuery, setSearchQuery] = useState("");
@@ -192,8 +137,10 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="other-games" className="mb-16" hidden>
-          <h2 className="text-3xl font-bold mb-8 text-center">Play Other Games</h2>
+        <section id="other-games" className="mb-16" >
+          {otherGames.length > 0 && (
+            <h2 className="text-3xl font-bold mb-8 text-center">Play Other Games</h2>
+          )}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {otherGames.map((game) => (
               <Card key={game.id} className="overflow-hidden hover:shadow-lg transition-shadow">
@@ -518,3 +465,4 @@ export default function Home() {
     </div>
   );
 }
+

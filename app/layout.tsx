@@ -7,7 +7,7 @@ const inter = Inter({ subsets: ['latin'] });
 export const metadata: Metadata = {
   metadataBase: new URL('https://blossom-game.com'),
   title: 'Blossom Game | Free Online Unblocked | blossom-game.com',
-  description: 'Blossom Game: Play free daily flower connect. Not puzzles or Wordle, but similar fun. Match blooms—no wordplay, just color joy.',
+  description: 'Blossom Game, Play free daily flower connect. While not puzzles or Wordle, find similar brain-teasing fun. Simply match blooms—no wordplay, just colorful joy.',
   openGraph: {
     title: 'Blossom Games - Free Online Games | Play Without Download',
     description: 'Play free online games at Blossom Games! Enjoy Love Tester, Bubble Shooter, Candy Match and more.',
