@@ -13,6 +13,7 @@
         "type": "image/png"
       }
     ],
+    "start_url": "https://blossom-game.com",
     "theme_color": "#ffffff",
     "background_color": "#ffffff",
     "display": "standalone"

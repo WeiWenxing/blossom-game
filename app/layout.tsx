@@ -5,6 +5,7 @@ import { Inter } from 'next/font/google';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://blossom-game.com'),
   title: 'Blossom Games - Free Online Games | Play HTML5 Games Without Download',
   description: 'Play free online games at Blossom Games! Enjoy Love Tester, Bubble Shooter, Candy Match and more. No downloads needed - play instantly in your browser.',
   keywords: 'Blossom Games, free online games, browser games, HTML5 games, no download games, Love Tester game',
@@ -12,8 +13,7 @@ export const metadata: Metadata = {
     title: 'Blossom Games - Free Online Games | Play Without Download',
     description: 'Play free online games at Blossom Games! Enjoy Love Tester, Bubble Shooter, Candy Match and more.',
     type: 'website',
-    locale: 'en_US',
-    url: 'https://blossomgames.example.com',
+    url: 'https://blossom-game.com',
     siteName: 'Blossom Games',
   },
   twitter: {
@@ -42,7 +42,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <link rel="canonical" href="https://gamehub.example.com" />
+        <link rel="canonical" href="https://blossom-game.com" />
         <link rel="apple-touch-icon" sizes="180x180" href="/assets/img/apple-touch-icon.png" />
         <link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicon-32x32.png" />
         <link rel="icon" type="image/png" sizes="16x16" href="/assets/img/favicon-16x16.png" />
@@ -57,4 +57,6 @@ export default function RootLayout({
     </html>
   );
 }
+
+
 

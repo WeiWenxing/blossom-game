@@ -11,7 +11,7 @@ export const generateGameSchema = (game: {
     "playMode": "SinglePlayer",
     "applicationCategory": "Browser Game",
     "gamePlatform": ["Web Browser"],
-    "url": game.url,
+    "url": `https://blossom-game.com${game.url}`,
     "inLanguage": "en",
     "offers": {
       "@type": "Offer",
@@ -27,12 +27,12 @@ export const websiteSchema = {
   "@type": "WebSite",
   "name": "Blossom Games",
   "description": "Free online games to play instantly without download. Your blooming garden of entertainment.",
-  "url": "https://blossomgames.example.com",
+  "url": "https://blossom-game.com",
   "potentialAction": {
     "@type": "SearchAction",
     "target": {
       "@type": "EntryPoint",
-      "urlTemplate": "https://blossomgames.example.com/search?q={search_term_string}"
+      "urlTemplate": "https://blossom-game.com/search?q={search_term_string}"
     },
     "query-input": "required name=search_term_string"
   }
@@ -93,5 +93,6 @@ export const howToPlaySchema = {
     }
   ]
 };
+
 
 
