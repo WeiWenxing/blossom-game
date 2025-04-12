@@ -6,9 +6,8 @@ const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://blossom-game.com'),
-  title: 'Blossom Games - Free Online Games | Play HTML5 Games Without Download',
-  description: 'Play free online games at Blossom Games! Enjoy Love Tester, Bubble Shooter, Candy Match and more. No downloads needed - play instantly in your browser.',
-  keywords: 'Blossom Games, free online games, browser games, HTML5 games, no download games, Love Tester game',
+  title: 'Blossom Game | Free Online Unblocked | blossom-game.com',
+  description: 'Blossom Game: Play free daily flower connect. Not puzzles or Wordle, but similar fun. Match blooms—no wordplay, just color joy.',
   openGraph: {
     title: 'Blossom Games - Free Online Games | Play Without Download',
     description: 'Play free online games at Blossom Games! Enjoy Love Tester, Bubble Shooter, Candy Match and more.',
