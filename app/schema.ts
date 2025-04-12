@@ -94,5 +94,26 @@ export const howToPlaySchema = {
   ]
 };
 
+export const generateRatingSchema = (rating: number, votes: number) => {
+  return {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Blossom Games",
+    "applicationCategory": "GameApplication",
+    "operatingSystem": "Any",
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": rating,
+      "ratingCount": votes,
+      "bestRating": "5",
+      "worstRating": "1"
+    },
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  };
+};
 
 
