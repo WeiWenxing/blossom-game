@@ -258,7 +258,7 @@ export default function Home() {
                   <div className="relative aspect-video overflow-hidden rounded-lg">
                     <img
                       src={step.image}
-                      alt={`Step ${step.position}: ${step.name}`}
+                      alt={`Blossom Game How to Play Step ${step.position}: ${step.name}`}
                       className="object-cover w-full h-full"
                     />
                   </div>
@@ -465,4 +465,3 @@ export default function Home() {
     </div>
   );
 }
-
