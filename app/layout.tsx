@@ -10,10 +10,17 @@ export const metadata: Metadata = {
   description: 'Blossom Game, Play free daily flower connect. While not puzzles or Wordle, find similar brain-teasing fun. Simply match blooms—no wordplay, just colorful joy.',
   openGraph: {
     title: 'Blossom Games - Free Online Games | Play Without Download',
-    description: 'Play free online games at Blossom Games! Enjoy Love Tester, Bubble Shooter, Candy Match and more.',
+    description: 'Blossom Game, Play free daily flower connect',
     type: 'website',
     url: 'https://blossom-game.com',
-    siteName: 'Blossom Games',
+    siteName: 'Blossom Game',
+    images: [
+      {
+        url: '/assets/guides/blossom-game-howto-2.jpg',
+        alt: 'Blossom Games - Free Online Games Screenshot',
+      }
+    ],
+    locale: 'en_US',
   },
   twitter: {
     card: 'summary_large_image',
@@ -56,6 +63,7 @@ export default function RootLayout({
     </html>
   );
 }
+
 
 
 

@@ -356,11 +356,11 @@ export default function Home() {
                 <div className="text-gray-500">
                   <span className="font-semibold">{votes.toLocaleString()}</span> votes
                 </div>
-                <button
+                <button hidden
                   onClick={resetRating}
                   className="mt-4 text-sm text-gray-500 hover:text-gray-700 underline"
                 >
-                  Reset Rating
+                  Reset
                 </button>
               </div>
             </div>
@@ -401,7 +401,7 @@ export default function Home() {
                 <div className="flex items-center space-x-2">
                   <Facebook className="h-5 w-5" />
                   <Link
-                    href={`https://www.facebook.com/share/sharer.php?u=${encodeURIComponent('https://blossom-game.com')}&quote=${encodeURIComponent('Just discovered this amazing Blossom game! 🌸 A beautiful and addictive puzzle adventure that you can play for free in your browser. Try it now! #BlossomGame #FreeOnlineGames')}`}
+                    href={`https://www.facebook.com/sharer.php?t=${encodeURIComponent('Blossom Game - Free Online Puzzle Adventure')}&u=${encodeURIComponent('https://blossom-game.com')}`}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-sm text-muted-foreground hover:text-primary"
@@ -420,20 +420,7 @@ export default function Home() {
                     Twitter
                   </Link>
                 </div>
-                <div className="flex items-center space-x-2">
-                  <Instagram className="h-5 w-5" />
-                  <Link
-                    href="https://www.instagram.com/create/story"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-sm text-muted-foreground hover:text-primary"
-                    onClick={() => {
-                      navigator.clipboard.writeText('🌸 Found this gorgeous Blossom puzzle game - so relaxing and fun! Play for free at https://blossom-game.com #BlossomGame #OnlineGaming');
-                    }}
-                  >
-                    Instagram
-                  </Link>
-                </div>
+
               </div>
             </div>
             <div>
