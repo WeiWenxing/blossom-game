@@ -165,6 +165,14 @@ export const content = {
       url: "https://html5.gamemonetize.com/ch0kbbr5cqadx8gghn8rj8t5jmsaxcke/",
       title: "Love Tester Game"
     }
+  },
+  otherGames: {
+    title: "Play Other Games",
+    cardLabels: {
+      playButton: "Play Now",
+      imageAlt: (title: string) => `${title} game preview`
+    }
   }
 } as const;
+
 

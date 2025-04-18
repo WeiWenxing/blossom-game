@@ -114,6 +114,24 @@ export const theme = {
     typography: {
       title: "text-4xl font-bold"
     }
+  },
+  otherGames: {
+    layout: {
+      section: "mb-16",
+      grid: "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6",
+      card: "overflow-hidden hover:shadow-lg transition-shadow",
+      image: "w-full h-48 object-cover"
+    },
+    spacing: {
+      title: "mb-8",
+      cardTitle: "mb-2",
+      cardDescription: "mb-4"
+    },
+    typography: {
+      title: "text-3xl font-bold text-center",
+      cardTitle: "text-xl"
+    }
   }
 } as const;
+
 

@@ -27,6 +27,8 @@ import { HowToPlay } from "@/components/how-to-play/HowToPlay";
 import { WhatIs } from "@/components/what-is/WhatIs";
 import { FAQ } from "@/components/faq/FAQ";
 import { GameSection } from "@/components/game-section/GameSection";
+import { OtherGames } from "@/components/other-games/OtherGames";
+import { getOtherGames } from "./games/game-data";
 
 interface Game {
   id: string;
@@ -36,16 +38,13 @@ interface Game {
   url: string;
 }
 
-const otherGames: Game[] = [];
-
 export default function Home() {
   const [searchQuery, setSearchQuery] = useState("");
   const [activeGame, setActiveGame] = useState<string | null>(null);
-  const [showLoveTester, setShowLoveTester] = useState(false);
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
-    const game = otherGames.find(game =>
+    const game = getOtherGames().find(game =>
       game.title.toLowerCase().includes(searchQuery.toLowerCase())
     );
     if (game) {
@@ -65,36 +64,10 @@ export default function Home() {
       <main className="container mx-auto px-4 py-8">
         <GameSection />
 
-        <section id="other-games" className="mb-16" >
-          {otherGames.length > 0 && (
-            <h2 className="text-3xl font-bold mb-8 text-center">Play Other Games</h2>
-          )}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {otherGames.map((game) => (
-              <Card key={game.id} className="overflow-hidden hover:shadow-lg transition-shadow">
-                <CardHeader className="p-0">
-                  <img
-                    src={game.image}
-                    alt={`${game.title} game preview`}
-                    className="w-full h-48 object-cover"
-                    loading="lazy"
-                  />
-                </CardHeader>
-                <CardContent className="p-4">
-                  <CardTitle className="text-xl mb-2">{game.title}</CardTitle>
-                  <CardDescription className="mb-4">{game.description}</CardDescription>
-                  <Button
-                    className="w-full"
-                    onClick={() => setActiveGame(game.url)}
-                    aria-label={`Play ${game.title}`}
-                  >
-                    Play Now
-                  </Button>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </section>
+        <OtherGames 
+          games={getOtherGames()} 
+          onGameSelect={setActiveGame} 
+        />
 
         <WhatIs />
 
@@ -111,3 +84,4 @@ export default function Home() {
     </div>
   );
 }
+
