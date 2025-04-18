@@ -26,6 +26,7 @@ import { Rating } from "@/components/rating/Rating";
 import { HowToPlay } from "@/components/how-to-play/HowToPlay";
 import { WhatIs } from "@/components/what-is/WhatIs";
 import { FAQ } from "@/components/faq/FAQ";
+import { GameSection } from "@/components/game-section/GameSection";
 
 interface Game {
   id: string;
@@ -62,18 +63,7 @@ export default function Home() {
       />
 
       <main className="container mx-auto px-4 py-8">
-        <section className="text-center mb-16">
-          <h2 className="text-4xl font-bold mb-8">Welcome to Blossom Game</h2>
-          <div className="aspect-video w-full max-w-4xl mx-auto mb-16 rounded-lg overflow-hidden shadow-xl bg-card">
-            <iframe
-              src="https://html5.gamemonetize.com/ch0kbbr5cqadx8gghn8rj8t5jmsaxcke/"
-              className="w-full h-full border-0"
-              allow="fullscreen"
-              title="Love Tester Game"
-              loading="lazy"
-            />
-          </div>
-        </section>
+        <GameSection />
 
         <section id="other-games" className="mb-16" >
           {otherGames.length > 0 && (

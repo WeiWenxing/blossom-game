@@ -158,5 +158,13 @@ export const content = {
         answer: "Try refreshing your browser, clearing cache, or using a different browser. If issues persist, contact us through our social media channels."
       }
     ]
+  },
+  gameSection: {
+    title: "Welcome to Blossom Game",
+    game: {
+      url: "https://html5.gamemonetize.com/ch0kbbr5cqadx8gghn8rj8t5jmsaxcke/",
+      title: "Love Tester Game"
+    }
   }
 } as const;
+

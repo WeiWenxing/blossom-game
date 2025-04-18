@@ -96,5 +96,24 @@ export const theme = {
     layout: {
       accordion: "w-full"
     }
+  },
+  gameSection: {
+    colors: {
+      container: "bg-card"
+    },
+    layout: {
+      section: "text-center",
+      container: "aspect-video w-full max-w-4xl mx-auto rounded-lg overflow-hidden shadow-xl",
+      iframe: "w-full h-full border-0"
+    },
+    spacing: {
+      section: "mb-16",
+      title: "mb-8",
+      container: "mb-16"
+    },
+    typography: {
+      title: "text-4xl font-bold"
+    }
   }
 } as const;
+
