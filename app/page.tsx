@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { Header } from "@/components/layout/Header";
+import { Footer } from "@/components/layout/Footer";
 import { Search, Facebook, Twitter, Instagram } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
@@ -21,6 +22,7 @@ import {
 import Link from "next/link";
 import { Gamepad as GamepadIcon, HelpCircle as HelpCircleIcon, Info as InfoIcon } from 'lucide-react';
 import { howToPlaySchema, generateRatingSchema } from "./schema";
+import { Rating } from "@/components/rating/Rating";
 
 interface Game {
   id: string;
@@ -36,58 +38,6 @@ export default function Home() {
   const [searchQuery, setSearchQuery] = useState("");
   const [activeGame, setActiveGame] = useState<string | null>(null);
   const [showLoveTester, setShowLoveTester] = useState(false);
-
-  // 设置初始默认值
-  const [rating, setRating] = useState(4.8);
-  const [votes, setVotes] = useState(15545);
-  const [userRating, setUserRating] = useState(0);
-  const [hasVoted, setHasVoted] = useState(false);
-
-  // 添加重置评分的函数
-  const resetRating = () => {
-    localStorage.removeItem('hasVoted');
-    localStorage.removeItem('userRating');
-    localStorage.removeItem('globalRating');
-    localStorage.removeItem('totalVotes');
-    setHasVoted(false);
-    setUserRating(0);
-    setRating(4.8);
-    setVotes(15545);
-  };
-
-  // 在组件挂载后从 localStorage 加载数据
-  useEffect(() => {
-    const savedRating = localStorage.getItem('globalRating');
-    const savedVotes = localStorage.getItem('totalVotes');
-    const savedUserRating = localStorage.getItem('userRating');
-    const savedHasVoted = localStorage.getItem('hasVoted');
-
-    if (savedRating) setRating(parseFloat(savedRating));
-    if (savedVotes) setVotes(parseInt(savedVotes));
-    if (savedUserRating) setUserRating(parseInt(savedUserRating));
-    if (savedHasVoted) setHasVoted(savedHasVoted === 'true');
-  }, []);
-
-  // 处理投票逻辑
-  const handleVote = (star: number) => {
-    if (!hasVoted) {
-      setUserRating(star);
-      setHasVoted(true);
-      const newTotalVotes = votes + 1;
-      const newRating = ((rating * votes) + star) / newTotalVotes;
-      const finalRating = Number(newRating.toFixed(1));
-
-      // 更新状态
-      setRating(finalRating);
-      setVotes(newTotalVotes);
-
-      // 保存到 localStorage
-      localStorage.setItem('hasVoted', 'true');
-      localStorage.setItem('userRating', star.toString());
-      localStorage.setItem('globalRating', finalRating.toString());
-      localStorage.setItem('totalVotes', newTotalVotes.toString());
-    }
-  };
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
@@ -293,147 +243,11 @@ export default function Home() {
         </section>
 
         <section className="mb-16" id="rating">
-          {/* 添加结构化数据 */}
-          <script
-            type="application/ld+json"
-            dangerouslySetInnerHTML={{
-              __html: JSON.stringify(generateRatingSchema(rating, votes))
-            }}
-          />
-
-          <div className="container mx-auto">
-            <div className="bg-[#fff2cb] rounded-lg p-6 mb-6">
-              <h2 className="text-3xl font-bold text-center">Rate Blossom Games</h2>
-            </div>
-            <div className="flex flex-col items-center justify-center space-y-4">
-              <div className="flex items-center space-x-2">
-                {[1, 2, 3, 4, 5].map((star) => (
-                  <button
-                    key={star}
-                    onClick={() => handleVote(star)}
-                    disabled={hasVoted}
-                    className={`w-12 h-12 flex items-center justify-center rounded-full transition-all ${
-                      (hasVoted && star <= userRating) || (!hasVoted && star <= userRating)
-                        ? 'bg-yellow-400 text-white'
-                        : hasVoted
-                        ? 'bg-gray-200 cursor-not-allowed'
-                        : 'bg-gray-200 hover:bg-yellow-200 cursor-pointer'
-                    }`}
-                    aria-label={`Rate ${star} stars`}
-                  >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 24 24"
-                      fill="currentColor"
-                      className="w-6 h-6"
-                    >
-                      <path
-                        fillRule="evenodd"
-                        d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z"
-                        clipRule="evenodd"
-                      />
-                    </svg>
-                  </button>
-                ))}
-              </div>
-              <div className="text-center">
-                <div className="text-4xl font-bold text-yellow-500">{rating}</div>
-                <div className="text-gray-500">
-                  <span className="font-semibold">{votes.toLocaleString()}</span> votes
-                </div>
-                <button hidden
-                  onClick={resetRating}
-                  className="mt-4 text-sm text-gray-500 hover:text-gray-700 underline"
-                >
-                  Reset
-                </button>
-              </div>
-            </div>
-          </div>
+          <Rating />
         </section>
       </main>
 
-      <footer className="border-t bg-muted">
-        <div className="container mx-auto px-4 py-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <div id="footer-about">
-              <h3 className="text-lg font-semibold mb-4">About</h3>
-              <p className="text-muted-foreground">Your premier destination for free online gaming entertainment. Play instantly, anywhere, anytime.</p>
-            </div>
-            <div>
-              <h3 className="font-bold mb-4">Quick Links</h3>
-              <ul className="space-y-2">
-                <li>
-                  <Link href="/games/love-tester" className="text-sm text-muted-foreground hover:text-primary">
-                    Love Tester
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/games/bubble-shooter" className="text-sm text-muted-foreground hover:text-primary">
-                    Bubble Shooter
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/games/candy-match" className="text-sm text-muted-foreground hover:text-primary">
-                    Candy Match
-                  </Link>
-                </li>
-              </ul>
-            </div>
-            <div>
-              <h3 className="font-bold mb-4">Share</h3>
-              <div className="space-y-4">
-                <div className="flex items-center space-x-2">
-                  <Facebook className="h-5 w-5" />
-                  <Link
-                    href={`https://www.facebook.com/sharer.php?t=${encodeURIComponent('Blossom Game - Free Online Puzzle Adventure')}&u=${encodeURIComponent('https://blossom-game.com')}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-sm text-muted-foreground hover:text-primary"
-                  >
-                    Facebook
-                  </Link>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <Twitter className="h-5 w-5" />
-                  <Link
-                    href={`https://twitter.com/intent/tweet?text=${encodeURIComponent('🌸 Playing Blossom - the most beautiful puzzle game online! No downloads needed, just pure entertainment. Join me at')}&url=${encodeURIComponent('https://blossom-game.com')}&hashtags=BlossomGame,PuzzleGames`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-sm text-muted-foreground hover:text-primary"
-                  >
-                    Twitter
-                  </Link>
-                </div>
-
-              </div>
-            </div>
-            <div>
-              <h3 className="font-bold mb-4">Legal</h3>
-              <ul className="space-y-2">
-                <li>
-                  <Link href="/privacy-policy" className="text-sm text-muted-foreground hover:text-primary">
-                    Privacy Policy
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/terms-of-service" className="text-sm text-muted-foreground hover:text-primary">
-                    Terms of Service
-                  </Link>
-                </li>
-              </ul>
-            </div>
-          </div>
-          <div className="mt-8 pt-8 border-t">
-            <div className="text-center text-sm text-muted-foreground">
-              © {new Date().getFullYear()} Blossom Games. All rights reserved.
-            </div>
-            <div className="text-center text-xs text-muted-foreground mt-2">
-              All games on this platform are free to play and do not require downloads.
-            </div>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }

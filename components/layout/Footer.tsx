@@ -1,86 +1,134 @@
 import Link from "next/link";
-import { Facebook, Twitter } from "lucide-react";
+import { Facebook, Twitter, LucideIcon } from "lucide-react";
+import { theme } from "@/config/theme";
+import { content } from "@/config/content";
+import { layout } from "@/config/layout";
+import { cn } from "@/lib/utils";
+
+const SocialIcons: Record<string, LucideIcon> = {
+  Facebook,
+  Twitter,
+};
 
 export function Footer() {
+  if (!layout.footer.isVisible) return null;
+
+  const footerClassName = cn(
+    theme.footer.colors.border,
+    theme.footer.colors.background
+  );
+
+  const containerClassName = cn(
+    theme.footer.layout.container,
+    theme.footer.layout.padding
+  );
+
+  const gridClassName = cn(theme.footer.layout.grid);
+
   return (
-    <footer className="border-t bg-muted">
-      <div className="container mx-auto px-4 py-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          <div id="footer-about">
-            <h3 className="text-lg font-semibold mb-4">About</h3>
-            <p className="text-muted-foreground">
-              Your premier destination for free online gaming entertainment. 
-              Play instantly, anywhere, anytime.
-            </p>
-          </div>
-          <div>
-            <h3 className="font-bold mb-4">Quick Links</h3>
-            <ul className="space-y-2">
-              <li>
-                <Link href="/games/love-tester" className="text-sm text-muted-foreground hover:text-primary">
-                  Love Tester
-                </Link>
-              </li>
-              <li>
-                <Link href="/games/bubble-shooter" className="text-sm text-muted-foreground hover:text-primary">
-                  Bubble Shooter
-                </Link>
-              </li>
-              <li>
-                <Link href="/games/candy-match" className="text-sm text-muted-foreground hover:text-primary">
-                  Candy Match
-                </Link>
-              </li>
-            </ul>
-          </div>
-          <div>
-            <h3 className="font-bold mb-4">Share</h3>
-            <div className="space-y-4">
-              <div className="flex items-center space-x-2">
-                <Facebook className="h-5 w-5" />
-                <Link
-                  href={`https://www.facebook.com/sharer.php?t=${encodeURIComponent('Blossom Game - Free Online Puzzle Adventure')}&u=${encodeURIComponent('https://blossom-game.com')}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-sm text-muted-foreground hover:text-primary"
-                >
-                  Facebook
-                </Link>
-              </div>
-              <div className="flex items-center space-x-2">
-                <Twitter className="h-5 w-5" />
-                <Link
-                  href={`https://twitter.com/intent/tweet?text=${encodeURIComponent('🌸 Playing Blossom - the most beautiful puzzle game online! No downloads needed, just pure entertainment. Join me at')}&url=${encodeURIComponent('https://blossom-game.com')}&hashtags=BlossomGame,PuzzleGames`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-sm text-muted-foreground hover:text-primary"
-                >
-                  Twitter
-                </Link>
+    <footer className={footerClassName}>
+      <div className={containerClassName}>
+        <div className={gridClassName}>
+          {/* About Section */}
+          {layout.footer.sections.about && (
+            <div>
+              <h3 className={cn("font-semibold", theme.footer.spacing.sectionTitle)}>
+                {content.footer.about.title}
+              </h3>
+              <p className={theme.footer.colors.mutedText}>
+                {content.footer.about.description}
+              </p>
+            </div>
+          )}
+
+          {/* Quick Links Section */}
+          {layout.footer.sections.quickLinks && (
+            <div>
+              <h3 className={cn("font-bold", theme.footer.spacing.sectionTitle)}>
+                {content.footer.quickLinks.title}
+              </h3>
+              <ul className={theme.footer.spacing.linkList}>
+                {content.footer.quickLinks.links.map((link) => (
+                  <li key={link.href}>
+                    <Link
+                      href={link.href}
+                      className={cn(
+                        "text-sm",
+                        theme.footer.colors.mutedText,
+                        theme.footer.colors.hover
+                      )}
+                    >
+                      {link.text}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+
+          {/* Social Links Section */}
+          {layout.footer.sections.social && (
+            <div>
+              <h3 className={cn("font-bold", theme.footer.spacing.sectionTitle)}>
+                {content.footer.social.title}
+              </h3>
+              <div className="space-y-4">
+                {content.footer.social.links.map((link) => {
+                  const Icon = SocialIcons[link.icon];
+                  return (
+                    <div key={link.href} className="flex items-center space-x-2">
+                      <Icon className="h-5 w-5" />
+                      <Link
+                        href={link.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={cn(
+                          "text-sm",
+                          theme.footer.colors.mutedText,
+                          theme.footer.colors.hover
+                        )}
+                      >
+                        {link.icon}
+                      </Link>
+                    </div>
+                  );
+                })}
               </div>
             </div>
-          </div>
-          <div>
-            <h3 className="font-bold mb-4">Legal</h3>
-            <ul className="space-y-2">
-              <li>
-                <Link href="/privacy-policy" className="text-sm text-muted-foreground hover:text-primary">
-                  Privacy Policy
-                </Link>
-              </li>
-              <li>
-                <Link href="/terms-of-service" className="text-sm text-muted-foreground hover:text-primary">
-                  Terms of Service
-                </Link>
-              </li>
-            </ul>
-          </div>
+          )}
+
+          {/* Legal Links Section */}
+          {layout.footer.sections.legal && (
+            <div>
+              <h3 className={cn("font-bold", theme.footer.spacing.sectionTitle)}>
+                {content.footer.legal.title}
+              </h3>
+              <ul className={theme.footer.spacing.linkList}>
+                {content.footer.legal.links.map((link) => (
+                  <li key={link.href}>
+                    <Link
+                      href={link.href}
+                      className={cn(
+                        "text-sm",
+                        theme.footer.colors.mutedText,
+                        theme.footer.colors.hover
+                      )}
+                    >
+                      {link.text}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
         </div>
+
+        {/* Copyright Section */}
         <div className="mt-8 pt-8 border-t">
-          <div className="text-center text-sm text-muted-foreground">
+          <div className={cn("text-center text-sm", theme.footer.colors.mutedText)}>
             © {new Date().getFullYear()} Blossom Games. All rights reserved.
           </div>
-          <div className="text-center text-xs text-muted-foreground mt-2">
+          <div className={cn("text-center text-xs mt-2", theme.footer.colors.mutedText)}>
             All games on this platform are free to play and do not require downloads.
           </div>
         </div>
