@@ -13,5 +13,25 @@ export const layout = {
       social: true,
       legal: true,
     }
+  },
+  whatIs: {
+    sectionId: "what-is",
+    grid: {
+      columns: "grid grid-cols-1 md:grid-cols-3 gap-8 items-center",
+      gap: "gap-8",
+    },
+    content: {
+      span: "md:col-span-2"
+    },
+    logo: {
+      size: {
+        width: "w-48",
+        height: "h-48"
+      }
+    }
   }
 } as const;
+
+
+
+

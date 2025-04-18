@@ -24,6 +24,7 @@ import { Gamepad as GamepadIcon, HelpCircle as HelpCircleIcon, Info as InfoIcon 
 import { howToPlaySchema, generateRatingSchema } from "./schema";
 import { Rating } from "@/components/rating/Rating";
 import { HowToPlay } from "@/components/how-to-play/HowToPlay";
+import { WhatIs } from "@/components/what-is/WhatIs";
 
 interface Game {
   id: string;
@@ -104,73 +105,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="mb-16" id="description">
-          <div className="container">
-            <div className="bg-card rounded-lg p-8 shadow-lg">
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
-                <div className="flex justify-center">
-                  <img
-                    src="/assets/img/android-chrome-512x512.png"
-                    alt="Blossom Games"
-                    className="w-48 h-48 object-contain"
-                  />
-                </div>
-                <div className="md:col-span-2">
-                  <h2 className="text-3xl font-bold mb-4">Blossom: Free Unblocked Online Games</h2>
-                  <p className="text-lg text-muted-foreground mb-6">
-                    Blossom Games is your premier destination for free online gaming entertainment.
-                    Our platform offers a diverse collection of browser-based games that you can play
-                    instantly without any downloads or installations. From classic arcade games like
-                    Bubble Shooter to engaging puzzle adventures and fun social games like Love Tester,
-                    we provide endless entertainment for players of all ages. All our games are optimized
-                    for both desktop and mobile devices, ensuring you can enjoy gaming wherever you are.
-                  </p>
-                  <ul className="flex gap-6">
-                    <li>
-                      <Link
-                        href="#how-to-play"
-                        className="text-primary hover:underline font-semibold flex items-center gap-2"
-                        onClick={(e) => {
-                          e.preventDefault();
-                          document.getElementById('how-to-play')?.scrollIntoView({ behavior: 'smooth' });
-                        }}
-                      >
-                        <GamepadIcon className="h-4 w-4" />
-                        How to Play
-                      </Link>
-                    </li>
-                    <li>
-                      <Link
-                        href="#faq"
-                        className="text-primary hover:underline font-semibold flex items-center gap-2"
-                        onClick={(e) => {
-                          e.preventDefault();
-                          document.getElementById('faq')?.scrollIntoView({ behavior: 'smooth' });
-                        }}
-                      >
-                        <HelpCircleIcon className="h-4 w-4" />
-                        FAQ
-                      </Link>
-                    </li>
-                    <li>
-                      <Link
-                        href="#footer-about"
-                        className="text-primary hover:underline font-semibold flex items-center gap-2"
-                        onClick={(e) => {
-                          e.preventDefault();
-                          document.getElementById('footer-about')?.scrollIntoView({ behavior: 'smooth' });
-                        }}
-                      >
-                        <InfoIcon className="h-4 w-4" />
-                        About
-                      </Link>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
+        <WhatIs />
 
         <HowToPlay />
 

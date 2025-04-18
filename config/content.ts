@@ -103,5 +103,32 @@ export const content = {
         imageAlt: "Blossom Game gameplay screen showing flower matching mechanics"
       }
     ]
+  },
+  whatIs: {
+    title: "Blossom: Free Unblocked Online Games",
+    description: "Blossom Games is your premier destination for free online gaming entertainment. Our platform offers a diverse collection of browser-based games that you can play instantly without any downloads or installations. From classic arcade games like Bubble Shooter to engaging puzzle adventures and fun social games like Love Tester, we provide endless entertainment for players of all ages. All our games are optimized for both desktop and mobile devices, ensuring you can enjoy gaming wherever you are.",
+    logo: {
+      src: "/assets/img/android-chrome-512x512.png",
+      alt: "Blossom Games"
+    },
+    links: [
+      {
+        text: "How to Play",
+        href: "#how-to-play",
+        icon: "GamepadIcon"
+      },
+      {
+        text: "FAQ",
+        href: "#faq",
+        icon: "HelpCircleIcon"
+      },
+      {
+        text: "About",
+        href: "#footer-about",
+        icon: "InfoIcon"
+      }
+    ]
   }
 } as const;
+
+

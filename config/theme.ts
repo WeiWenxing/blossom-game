@@ -58,5 +58,34 @@ export const theme = {
       title: "mb-8",
       content: "p-6"
     }
+  },
+  whatIs: {
+    colors: {
+      card: "bg-card",
+      title: "text-foreground",
+      description: "text-muted-foreground",
+      link: "text-primary hover:underline"
+    },
+    layout: {
+      container: "container",
+      card: "rounded-lg shadow-lg",
+      logo: "object-contain",
+      logoWrapper: "flex justify-center"
+    },
+    spacing: {
+      section: "mb-16",
+      card: "p-8",
+      title: "mb-4",
+      description: "mb-6",
+      links: "gap-6"
+    },
+    typography: {
+      title: "text-3xl font-bold",
+      description: "text-lg",
+      link: "font-semibold"
+    }
   }
 } as const;
+
+
+
