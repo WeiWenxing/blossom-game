@@ -38,60 +38,25 @@ export const websiteSchema = {
   }
 };
 
+import { content } from "@/config/content";
+
 export const howToPlaySchema = {
   "@context": "http://schema.org",
   "@type": "HowTo",
-  "name": "How to Play Games on Blossom Games",
+  "name": content.howToPlay.title,
   "url": "https://blossomgames.example.com",
   "inLanguage": "en",
   "image": {
     "@type": "ImageObject",
-    "url": "/assets/guides/blossom-game-howto-1.jpg"
+    "url": content.howToPlay.steps[0].image
   },
-  "step": [
-    {
-      "@type": "HowToStep",
-      "position": 1,
-      "name": "Tap to Start",
-      "text": "Tap the \"TAP TO START\" button at the bottom of the screen to start the game.",
-      "image": "/assets/guides/blossom-game-howto-1.jpg"
-    },
-    {
-      "@type": "HowToStep",
-      "position": 2,
-      "name": "Click Play",
-      "text": "Click the 'Play Now' button to play.",
-      "image": "/assets/guides/blossom-game-howto-2.jpg"
-    },
-    {
-      "@type": "HowToStep",
-      "position": 3,
-      "name": "Gameplay Introduction",
-      "text": "This is the gameplay introduction screen of the game, guiding players on how to play.",
-      "image": "/assets/guides/blossom-game-howto-3.jpg"
-    },
-    {
-      "@type": "HowToStep",
-      "position": 4,
-      "name": "Tutorial Screen",
-      "text": "This is a tutorial screen of the game.",
-      "image": "/assets/guides/blossom-game-howto-4.jpg"
-    },
-    {
-      "@type": "HowToStep",
-      "position": 5,
-      "name": "Level Selection",
-      "text": "On the levels selection screen, tap the unlocked tile marked with the number \"1\" to start level 1.",
-      "image": "/assets/guides/blossom-game-howto-5.jpg"
-    },
-    {
-      "@type": "HowToStep",
-      "position": 6,
-      "name": "Playing Game",
-      "text": "In the game screen, tap matching flower tiles according to the rules to eliminate them and complete level objectives.",
-      "image": "/assets/guides/blossom-game-howto-6.jpg"
-    }
-  ]
+  "step": content.howToPlay.steps.map(step => ({
+    "@type": "HowToStep",
+    "position": step.position,
+    "name": step.name,
+    "text": step.text,
+    "image": step.image
+  }))
 };
 
 export const generateRatingSchema = (rating: number, votes: number) => {
@@ -115,5 +80,3 @@ export const generateRatingSchema = (rating: number, votes: number) => {
     }
   };
 };
-
-

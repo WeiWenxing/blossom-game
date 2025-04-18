@@ -23,6 +23,7 @@ import Link from "next/link";
 import { Gamepad as GamepadIcon, HelpCircle as HelpCircleIcon, Info as InfoIcon } from 'lucide-react';
 import { howToPlaySchema, generateRatingSchema } from "./schema";
 import { Rating } from "@/components/rating/Rating";
+import { HowToPlay } from "@/components/how-to-play/HowToPlay";
 
 interface Game {
   id: string;
@@ -171,40 +172,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="mb-16" id="how-to-play">
-          <script
-            type="application/ld+json"
-            dangerouslySetInnerHTML={{ __html: JSON.stringify(howToPlaySchema) }}
-          />
-
-          <h2 className="text-3xl font-bold mb-8 text-center">How to Play</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {howToPlaySchema.step.map((step, index) => (
-              <Card key={index}>
-                <CardHeader>
-                  <CardTitle className="flex items-center gap-2">
-                    <span className="flex items-center justify-center w-8 h-8 rounded-full bg-primary text-primary-foreground">
-                      {step.position}
-                    </span>
-                    {step.name}
-                  </CardTitle>
-                </CardHeader>
-                <CardContent className="p-6 space-y-4">
-                  <div className="relative aspect-video overflow-hidden rounded-lg">
-                    <img
-                      src={step.image}
-                      alt={`Blossom Game How to Play Step ${step.position}: ${step.name}`}
-                      className="object-cover w-full h-full"
-                    />
-                  </div>
-                  <p className="text-muted-foreground">
-                    {step.text}
-                  </p>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </section>
+        <HowToPlay />
 
         <section className="mb-16" id="faq">
           <h2 className="text-3xl font-bold mb-8 text-center">FAQ</h2>
@@ -251,4 +219,5 @@ export default function Home() {
     </div>
   );
 }
+
 

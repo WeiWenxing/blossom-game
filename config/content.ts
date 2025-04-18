@@ -56,7 +56,52 @@ export const content = {
     votes: "votes",
     initialRating: 4.8,
     initialVotes: 15545
+  },
+  howToPlay: {
+    title: "How to Play",
+    steps: [
+      {
+        position: 1,
+        name: "Tap to Start",
+        text: "Tap the \"TAP TO START\" button at the bottom of the screen to start the game.",
+        image: "/assets/guides/blossom-game-howto-1.jpg",
+        imageAlt: "Blossom Game start screen showing TAP TO START button"
+      },
+      {
+        position: 2,
+        name: "Click Play",
+        text: "Click the 'Play Now' button to play.",
+        image: "/assets/guides/blossom-game-howto-2.jpg",
+        imageAlt: "Blossom Game play button interface"
+      },
+      {
+        position: 3,
+        name: "Gameplay Introduction",
+        text: "This is the gameplay introduction screen of the game, guiding players on how to play.",
+        image: "/assets/guides/blossom-game-howto-3.jpg",
+        imageAlt: "Blossom Game tutorial introduction screen"
+      },
+      {
+        position: 4,
+        name: "Tutorial Screen",
+        text: "This is a tutorial screen of the game.",
+        image: "/assets/guides/blossom-game-howto-4.jpg",
+        imageAlt: "Blossom Game detailed tutorial instructions"
+      },
+      {
+        position: 5,
+        name: "Level Selection",
+        text: "On the levels selection screen, tap the unlocked tile marked with the number \"1\" to start level 1.",
+        image: "/assets/guides/blossom-game-howto-5.jpg",
+        imageAlt: "Blossom Game level selection screen showing level 1"
+      },
+      {
+        position: 6,
+        name: "Playing Game",
+        text: "In the game screen, tap matching flower tiles according to the rules to eliminate them and complete level objectives.",
+        image: "/assets/guides/blossom-game-howto-6.jpg",
+        imageAlt: "Blossom Game gameplay screen showing flower matching mechanics"
+      }
+    ]
   }
 } as const;
-
-

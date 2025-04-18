@@ -35,5 +35,28 @@ export const theme = {
       sectionTitle: "mb-4",
       linkList: "space-y-2",
     },
+  },
+  layout: {
+    section: {
+      spacing: "mb-24" // 使用更大的间距 mb-24 (6rem) 替代原来的 mb-16 (4rem)
+    }
+  },
+  howToPlay: {
+    colors: {
+      title: "text-foreground",
+      stepNumber: "bg-primary text-primary-foreground",
+      cardBorder: "border border-border",
+      description: "text-muted-foreground"
+    },
+    layout: {
+      container: "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6",
+      card: "h-full",
+      imageContainer: "aspect-video overflow-hidden rounded-lg"
+    },
+    spacing: {
+      section: "py-12",
+      title: "mb-8",
+      content: "p-6"
+    }
   }
 } as const;
