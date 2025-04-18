@@ -3,25 +3,6 @@
 import { useState, useEffect } from "react";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
-import { Search, Facebook, Twitter, Instagram } from "lucide-react";
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
-import Link from "next/link";
-import { Gamepad as GamepadIcon, HelpCircle as HelpCircleIcon, Info as InfoIcon } from 'lucide-react';
-import { howToPlaySchema, generateRatingSchema } from "./schema";
 import { Rating } from "@/components/rating/Rating";
 import { HowToPlay } from "@/components/how-to-play/HowToPlay";
 import { WhatIs } from "@/components/what-is/WhatIs";
