@@ -29,9 +29,12 @@ export const layout = {
         height: "h-48"
       }
     }
+  },
+  faq: {
+    sectionId: "faq",
+    accordion: {
+      type: "single",
+      collapsible: true
+    }
   }
 } as const;
-
-
-
-

@@ -84,8 +84,17 @@ export const theme = {
       description: "text-lg",
       link: "font-semibold"
     }
+  },
+  faq: {
+    spacing: {
+      section: "mb-16",
+      title: "mb-8"
+    },
+    typography: {
+      title: "text-3xl font-bold text-center"
+    },
+    layout: {
+      accordion: "w-full"
+    }
   }
 } as const;
-
-
-

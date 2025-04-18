@@ -128,7 +128,35 @@ export const content = {
         icon: "InfoIcon"
       }
     ]
+  },
+  faq: {
+    title: "FAQ",
+    items: [
+      {
+        value: "item-1",
+        question: "Are all games really free to play?",
+        answer: "Yes! All games on Blossom Games are 100% free to play. We believe in providing entertainment without any cost to our players."
+      },
+      {
+        value: "item-2",
+        question: "Do I need to create an account?",
+        answer: "No account is needed! Just visit our website and start playing instantly. We keep it simple and hassle-free."
+      },
+      {
+        value: "item-3",
+        question: "Which devices are supported?",
+        answer: "Our games work on all modern devices including smartphones, tablets, laptops, and desktop computers. Just make sure you have an updated browser."
+      },
+      {
+        value: "item-4",
+        question: "How often are new games added?",
+        answer: "We regularly update our collection with new games. Check back often to discover fresh entertainment!"
+      },
+      {
+        value: "item-5",
+        question: "What if a game isn't loading?",
+        answer: "Try refreshing your browser, clearing cache, or using a different browser. If issues persist, contact us through our social media channels."
+      }
+    ]
   }
 } as const;
-
-

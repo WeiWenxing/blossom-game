@@ -25,6 +25,7 @@ import { howToPlaySchema, generateRatingSchema } from "./schema";
 import { Rating } from "@/components/rating/Rating";
 import { HowToPlay } from "@/components/how-to-play/HowToPlay";
 import { WhatIs } from "@/components/what-is/WhatIs";
+import { FAQ } from "@/components/faq/FAQ";
 
 interface Game {
   id: string;
@@ -109,41 +110,7 @@ export default function Home() {
 
         <HowToPlay />
 
-        <section className="mb-16" id="faq">
-          <h2 className="text-3xl font-bold mb-8 text-center">FAQ</h2>
-          <Accordion type="single" collapsible className="w-full">
-            <AccordionItem value="item-1">
-              <AccordionTrigger>Are all games really free to play?</AccordionTrigger>
-              <AccordionContent>
-                Yes! All games on Blossom Games are 100% free to play. We believe in providing entertainment without any cost to our players.
-              </AccordionContent>
-            </AccordionItem>
-            <AccordionItem value="item-2">
-              <AccordionTrigger>Do I need to create an account?</AccordionTrigger>
-              <AccordionContent>
-                No account is needed! Just visit our website and start playing instantly. We keep it simple and hassle-free.
-              </AccordionContent>
-            </AccordionItem>
-            <AccordionItem value="item-3">
-              <AccordionTrigger>Which devices are supported?</AccordionTrigger>
-              <AccordionContent>
-                Our games work on all modern devices including smartphones, tablets, laptops, and desktop computers. Just make sure you have an updated browser.
-              </AccordionContent>
-            </AccordionItem>
-            <AccordionItem value="item-4">
-              <AccordionTrigger>How often are new games added?</AccordionTrigger>
-              <AccordionContent>
-                We regularly update our collection with new games. Check back often to discover fresh entertainment!
-              </AccordionContent>
-            </AccordionItem>
-            <AccordionItem value="item-5">
-              <AccordionTrigger>What if a game isn't loading?</AccordionTrigger>
-              <AccordionContent>
-                Try refreshing your browser, clearing cache, or using a different browser. If issues persist, contact us through our social media channels.
-              </AccordionContent>
-            </AccordionItem>
-          </Accordion>
-        </section>
+        <FAQ />
 
         <section className="mb-16" id="rating">
           <Rating />
@@ -154,5 +121,3 @@ export default function Home() {
     </div>
   );
 }
-
-
