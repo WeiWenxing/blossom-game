@@ -9,15 +9,7 @@ import { WhatIs } from "@/components/what-is/WhatIs";
 import { FAQ } from "@/components/faq/FAQ";
 import { GameSection } from "@/components/game-section/GameSection";
 import { OtherGames } from "@/components/other-games/OtherGames";
-import { getOtherGames } from "./games/game-data";
-
-interface Game {
-  id: string;
-  title: string;
-  description: string;
-  image: string;
-  url: string;
-}
+import { Game, getOtherGames } from "./games/game-data";
 
 export default function Home() {
   const [searchQuery, setSearchQuery] = useState("");
@@ -65,4 +57,5 @@ export default function Home() {
     </div>
   );
 }
+
 
