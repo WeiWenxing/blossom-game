@@ -5,8 +5,9 @@ import { content } from "@/config/content";
 import { generateRatingSchema } from "@/app/schema";
 
 export function Rating() {
-  const [rating, setRating] = useState(content.rating.initialRating);
-  const [votes, setVotes] = useState(content.rating.initialVotes);
+  // 明确指定类型为 number，而不是让 TypeScript 推断为字面量类型
+  const [rating, setRating] = useState<number>(content.rating.initialRating);
+  const [votes, setVotes] = useState<number>(content.rating.initialVotes);
   const [userRating, setUserRating] = useState(0);
   const [hasVoted, setHasVoted] = useState(false);
 
