@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { Header } from "@/components/layout/Header";
 import { Search, Facebook, Twitter, Instagram } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
@@ -101,27 +102,11 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-background">
-      <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 hidden">
-        <div className="container flex h-16 items-center justify-between">
-          <nav className="flex items-center space-x-4 lg:space-x-6">
-            <Link href="/" className="text-2xl font-bold">
-              <h1>Blossom Games</h1>
-            </Link>
-          </nav>
-          <form onSubmit={handleSearch} className="flex w-full max-w-sm items-center space-x-2">
-            <Input
-              type="search"
-              placeholder="Find your next favorite game..."
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              aria-label="Search games"
-            />
-            <Button type="submit" size="icon" aria-label="Search">
-              <Search className="h-4 w-4" />
-            </Button>
-          </form>
-        </div>
-      </header>
+      <Header
+        searchQuery={searchQuery}
+        onSearchChange={setSearchQuery}
+        onSearch={handleSearch}
+      />
 
       <main className="container mx-auto px-4 py-8">
         <section className="text-center mb-16">
@@ -452,3 +437,4 @@ export default function Home() {
     </div>
   );
 }
+
